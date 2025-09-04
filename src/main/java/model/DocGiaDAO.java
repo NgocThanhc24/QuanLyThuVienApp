@@ -26,8 +26,8 @@ public class DocGiaDAO {
                     rs.getString("HoTen"),
                     rs.getDate("NgaySinh"),
                     rs.getString("DiaChi"),
-                    rs.getString("SoDienThoai"),
-                    rs.getString("Email")
+                    rs.getString("GioiTinh"),
+                    rs.getDate("NgayDangKy")
                 );
                 list.add(dg);
             }
@@ -42,7 +42,7 @@ public class DocGiaDAO {
 
     // Thêm độc giả mới
     public boolean insertDocGia(DocGia dg) {
-        String sql = "INSERT INTO DocGia(HoTen, NgaySinh, DiaChi, SoDienThoai, Email) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO DocGia(HoTen, NgaySinh, DiaChi, GioiTinh, NgayDangKy) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -50,8 +50,8 @@ public class DocGiaDAO {
             ps.setString(1, dg.getHoTen());
             ps.setDate(2, new java.sql.Date(dg.getNgaySinh().getTime()));
             ps.setString(3, dg.getDiaChi());
-            ps.setString(4, dg.getSoDienThoai());
-            ps.setString(5, dg.getEmail());
+            ps.setString(4, dg.getGioiTinh());
+            ps.setDate(5, dg.getNgayDangKy());
 
             int affectedRows = ps.executeUpdate();
 
@@ -74,7 +74,7 @@ public class DocGiaDAO {
 
     // Cập nhật thông tin độc giả
     public boolean updateDocGia(DocGia dg) {
-        String sql = "UPDATE DocGia SET HoTen = ?, NgaySinh = ?, DiaChi = ?, SoDienThoai = ?, Email = ? WHERE maDocGia = ?";
+        String sql = "UPDATE DocGia SET HoTen = ?, NgaySinh = ?, DiaChi = ?, GioiTinh = ?, NgayDangKy = ? WHERE maDocGia = ?";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -82,8 +82,8 @@ public class DocGiaDAO {
             ps.setString(1, dg.getHoTen());
             ps.setDate(2, new java.sql.Date(dg.getNgaySinh().getTime()));
             ps.setString(3, dg.getDiaChi());
-            ps.setString(4, dg.getSoDienThoai());
-            ps.setString(5, dg.getEmail());
+            ps.setString(4, dg.getGioiTinh());
+            ps.setDate(5, dg.getNgayDangKy());
             ps.setInt(6, dg.getMaDocGia());
 
             return ps.executeUpdate() > 0;
@@ -127,8 +127,8 @@ public class DocGiaDAO {
                         rs.getString("HoTen"),
                         rs.getDate("NgaySinh"),
                         rs.getString("DiaChi"),
-                        rs.getString("SoDienThoai"),
-                        rs.getString("Email")
+                        rs.getString("GioiTinh"),
+                        rs.getDate("NgayDangKy")
                     );
                     list.add(dg);
                 }

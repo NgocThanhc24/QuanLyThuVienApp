@@ -22,11 +22,11 @@ public class MainFrame extends JFrame {
         // Tạo menu bar
         JMenuBar menuBar = new JMenuBar();
 
-       // Menu Độc giả
+        // Menu Độc giả
         JMenu menuDocGia = new JMenu("Độc giả");
         JMenuItem qlDocGia = new JMenuItem("Quản lý độc giả");
 
-       // Menu Sách
+        // Menu Sách
         JMenu menuSach = new JMenu("Sách");
         JMenuItem qlSach = new JMenuItem("Quản lý sách");
 
@@ -40,7 +40,7 @@ public class MainFrame extends JFrame {
         JMenuItem tkDocGiaNhieu = new JMenuItem("Độc giả mượn nhiều sách");
         JMenuItem tkSachQuaHan = new JMenuItem("Sách quá hạn");
 
-       // Gắn item vào menu
+        // Gắn item vào menu
         menuDocGia.add(qlDocGia);
         menuSach.add(qlSach);
         menuMuonTra.add(qlPhieuMuon);
@@ -54,7 +54,7 @@ public class MainFrame extends JFrame {
         menuBar.add(menuMuonTra);
         menuBar.add(menuThongKe);
         setJMenuBar(menuBar);
-        
+
 //        JToolBar toolBar = new JToolBar();
 //        JButton btQL_DocGia = new JButton("Quản lý độc giả");
 //        JButton btQL_Sach = new JButton("Quản lý sách");
@@ -62,32 +62,31 @@ public class MainFrame extends JFrame {
 //        toolBar.add(btQL_Sach);
 //        
 //        add(toolBar, BorderLayout.NORTH);
-        
-        
-
-      // Panel chính dùng CardLayout
+        // Panel chính dùng CardLayout
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
 
-     // Thêm các panel chức năng
+        // Thêm các panel chức năng
         mainPanel.add(new QuanLyDocGiaPanel(), "QL_DOCGIA");
         mainPanel.add(new QuanLySachPanel(), "QL_SACH");
-//        mainPanel.add(new QuanLyPhieuMuonPanel(), "QL_PHIEUMUON");
-//        mainPanel.add(new ThongKeSachDangMuonPanel(), "TK_DANGMUON");
-//        mainPanel.add(new ThongKeDocGiaNhieuPanel(), "TK_DOCGIA");
-//        mainPanel.add(new ThongKeSachQuaHanPanel(), "TK_QUAHAN");
+        mainPanel.add(new QuanLyPhieuMuonPanel(), "QL_PHIEUMUON");
+        mainPanel.add(new ThongKeSachDangMuonPanel(), "TK_DANGMUON");
+        mainPanel.add(new ThongKeDocGiaNhieuPanel(), "TK_DOCGIA");
+        mainPanel.add(new ThongKeSachQuaHanPanel(), "TK_QUAHAN");
 
-        add(mainPanel,BorderLayout.CENTER);
+        add(mainPanel, BorderLayout.CENTER);
 
-       // Xử lý sự kiện menu
+        // Xử lý sự kiện menu
         qlDocGia.addActionListener(e -> cardLayout.show(mainPanel, "QL_DOCGIA"));
         qlSach.addActionListener(e -> cardLayout.show(mainPanel, "QL_SACH"));
         qlPhieuMuon.addActionListener(e -> cardLayout.show(mainPanel, "QL_PHIEUMUON"));
         tkSachDangMuon.addActionListener(e -> cardLayout.show(mainPanel, "TK_DANGMUON"));
         tkDocGiaNhieu.addActionListener(e -> cardLayout.show(mainPanel, "TK_DOCGIA"));
         tkSachQuaHan.addActionListener(e -> cardLayout.show(mainPanel, "TK_QUAHAN"));
-        
-        //// Xử lý sự kiện Toolbar
+
+    
+
+    //// Xử lý sự kiện Toolbar
 //        btQL_DocGia.addActionListener(e->cardLayout.show(mainPanel, "QL_DOCGIA"));
 //        
 //        btQL_Sach.addActionListener(e-> cardLayout.show(mainPanel, "QL_SACH"));
@@ -100,4 +99,5 @@ public class MainFrame extends JFrame {
     public static void main(String[] args) {
         new MainFrame().setVisible(true);
     }
+
 }

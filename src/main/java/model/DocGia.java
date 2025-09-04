@@ -12,24 +12,24 @@ public class DocGia {
     private String hoTen;
     private Date ngaySinh;
     private String diaChi;
-    private String soDienThoai;
-    private String email;
+    private String GioiTinh;
+    private Date NgayDangKy;
 
-    public DocGia(int maDocGia, String hoTen, Date ngaySinh, String diaChi, String soDienThoai, String email) {
+    public DocGia(int maDocGia, String hoTen, Date ngaySinh, String diaChi, String GioiTinh, Date NgayDangKy) {
         this.maDocGia = maDocGia;
         this.hoTen = hoTen;
         this.ngaySinh = ngaySinh;
         this.diaChi = diaChi;
-        this.soDienThoai = soDienThoai;
-        this.email = email;
+        this.GioiTinh = GioiTinh;
+        this.NgayDangKy = NgayDangKy;
     }
 
-    public DocGia(String hoTen, Date ngaySinh, String diaChi, String soDienThoai, String email) {
+    public DocGia(String hoTen, Date ngaySinh, String diaChi, String GioiTinh, Date NgayDangKy) {
         this.hoTen = hoTen;
         this.ngaySinh = ngaySinh;
         this.diaChi = diaChi;
-        this.soDienThoai = soDienThoai;
-        this.email = email;
+        this.GioiTinh = GioiTinh;
+        this.NgayDangKy = NgayDangKy;
     }
 
     // Getters & Setters
@@ -65,25 +65,25 @@ public class DocGia {
         this.diaChi = diaChi;
     }
 
-    public String getSoDienThoai() {
-        return soDienThoai;
+    public String getGioiTinh() {
+        return GioiTinh;
     }
 
-    public void setSoDienThoai(String soDienThoai) {
-        this.soDienThoai = soDienThoai;
+    public void setGioiTinh(String GioiTinh) {
+        this.GioiTinh = GioiTinh;
     }
 
-    public String getEmail() {
-        return email;
+    public Date getNgayDangKy() {
+        return NgayDangKy;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setNgayDangKy(Date NgayDangKy) {
+        this.NgayDangKy = NgayDangKy;
     }
 
     @Override
     public String toString() {
-        return "DocGia{" + "maDocGia=" + maDocGia + ", hoTen=" + hoTen + ", ngaySinh=" + ngaySinh + ", diaChi=" + diaChi + ", soDienThoai=" + soDienThoai + ", email=" + email + '}';
+        return "DocGia{" + "maDocGia=" + maDocGia + ", hoTen=" + hoTen + ", ngaySinh=" + ngaySinh + ", diaChi=" + diaChi + ", GioiTinh=" + GioiTinh + ", NgayDangKy=" + NgayDangKy + '}';
     }
     
 }
