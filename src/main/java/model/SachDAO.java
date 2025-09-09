@@ -27,7 +27,7 @@ public class SachDAO {
                         rs.getString("TenSach"),
                         rs.getString("TacGia"),
                         rs.getString("TheLoai"),
-                        rs.getInt("NamXB"),
+                        rs.getInt("NamXuatBan"),
                         rs.getInt("SoLuong"),
                         rs.getString("TrangThai")
                 );
@@ -43,7 +43,21 @@ public class SachDAO {
     }
 
     public static List<String> getAllTheLoai() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<String> list = new ArrayList<>();
+        String sql = "SELECT DISTINCT TheLoai FROM Sach";
+
+        try (Connection conn = DBConnection.getConnection(); Statement st = conn.createStatement(); ResultSet rs = st.executeQuery(sql)) {
+
+            while (rs.next()) {
+                list.add(rs.getString("TheLoai"));
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi lấy danh sách Thể loại:");
+            e.printStackTrace();
+        }
+
+        return list;
     }
 
     // Thêm sách mới
@@ -55,7 +69,7 @@ public class SachDAO {
             ps.setString(1, s.getTenSach());
             ps.setString(2, s.getTacGia());
             ps.setString(3, s.getTheLoai());
-            ps.setInt(4, s.getNamXB());
+            ps.setInt(4, s.getNamXuatBan());
             ps.setInt(5, s.getSoLuong());
             ps.setString(6, s.getTrangThai());
 
@@ -86,7 +100,7 @@ public class SachDAO {
 
             ps.setString(1, s.getTenSach());
             ps.setString(2, s.getTacGia());
-            ps.setInt(3, s.getNamXB());
+            ps.setInt(3, s.getNamXuatBan());
             ps.setString(4, s.getTheLoai());
             ps.setInt(5, s.getSoLuong());
             ps.setString(6, s.getTrangThai());
@@ -131,7 +145,7 @@ public class SachDAO {
                             rs.getString("TenSach"),
                             rs.getString("TacGia"),
                             rs.getString("TheLoai"),
-                            rs.getInt("NamXB"),
+                            rs.getInt("NamXuatBan"),
                             rs.getInt("SoLuong"),
                             rs.getString("TrangThai")
                     );

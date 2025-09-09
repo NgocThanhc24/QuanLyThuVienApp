@@ -37,6 +37,7 @@ public class QuanLySachPanel extends javax.swing.JPanel {
 
         loadData();
         LoadTheLoai();
+
     }
 
     /**
@@ -68,7 +69,7 @@ public class QuanLySachPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblSach = new javax.swing.JTable();
-        txtNamXB = new javax.swing.JTextField();
+        txtNamXuatBan = new javax.swing.JTextField();
 
         setToolTipText("");
 
@@ -163,9 +164,9 @@ public class QuanLySachPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblSach);
 
-        txtNamXB.addActionListener(new java.awt.event.ActionListener() {
+        txtNamXuatBan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNamXBActionPerformed(evt);
+                txtNamXuatBanActionPerformed(evt);
             }
         });
 
@@ -202,7 +203,7 @@ public class QuanLySachPanel extends javax.swing.JPanel {
                                     .addComponent(txtTrangThai, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cboTheLoai, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtSoLuong, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                                    .addComponent(txtNamXB)))
+                                    .addComponent(txtNamXuatBan)))
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,7 +237,7 @@ public class QuanLySachPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNamXB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNamXuatBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
@@ -287,20 +288,20 @@ public class QuanLySachPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSoLuongActionPerformed
 
-    private void txtNamXBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamXBActionPerformed
+    private void txtNamXuatBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNamXuatBanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNamXBActionPerformed
+    }//GEN-LAST:event_txtNamXuatBanActionPerformed
 
     private void tblSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSachMouseClicked
         int row = tblSach.getSelectedRow();
-        if (row != -1) {
-            txtMaSach.setText(model.getValueAt(row, 0).toString());
-            txtTenSach.setText(model.getValueAt(row, 1).toString());
-            txtTacGia.setText(model.getValueAt(row, 2).toString());
+        //  SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        if (row >= 0) {
+            txtTenSach.setText(tblSach.getValueAt(row, 1).toString());
+            txtTacGia.setText(tblSach.getValueAt(row, 2).toString());
             cboTheLoai.setSelectedItem(model.getValueAt(row, 3).toString());
-            txtNamXB.setText(model.getValueAt(row, 4).toString());
-            txtSoLuong.setText(model.getValueAt(row, 5).toString());
-            txtTrangThai.setText(model.getValueAt(row, 6).toString());
+            txtNamXuatBan.setText(tblSach.getValueAt(row, 4).toString());
+            txtSoLuong.setText(tblSach.getValueAt(row, 5).toString());
+            txtTrangThai.setText(tblSach.getValueAt(row, 6).toString());
         }
     }//GEN-LAST:event_tblSachMouseClicked
 
@@ -322,7 +323,7 @@ public class QuanLySachPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblSach;
     private javax.swing.JTextField txtMaSach;
-    private javax.swing.JTextField txtNamXB;
+    private javax.swing.JTextField txtNamXuatBan;
     private javax.swing.JTextField txtSoLuong;
     private javax.swing.JTextField txtTacGia;
     private javax.swing.JTextField txtTenSach;
@@ -331,12 +332,11 @@ public class QuanLySachPanel extends javax.swing.JPanel {
 
     private void loadData() {
         model.setRowCount(0);
-        List<Sach> list = SachDAO.getAll();
-
+        List<Sach> list = sachDAO.getAll(); // dùng đối tượng thay vì static
         for (Sach s : list) {
             model.addRow(new Object[]{
                 s.getMaSach(), s.getTenSach(), s.getTacGia(),
-                s.getTheLoai(), s.getNamXB(), s.getSoLuong(), s.getTrangThai()
+                s.getTheLoai(), s.getNamXuatBan(), s.getSoLuong(), s.getTrangThai()
             });
         }
     }
@@ -346,10 +346,10 @@ public class QuanLySachPanel extends javax.swing.JPanel {
             String TenSach = txtTenSach.getText();
             String TacGia = txtTacGia.getText();
             String TheLoai = cboTheLoai.getSelectedItem().toString();
-            int NamXB = Integer.parseInt(txtNamXB.getText());
+            int NamXuatBan = Integer.parseInt(txtNamXuatBan.getText());
             int SoLuong = Integer.parseInt(txtSoLuong.getText());
             String TrangThai = txtTrangThai.getText();
-            Sach s = new Sach(TenSach, TacGia, TheLoai, NamXB, SoLuong, TrangThai);
+            Sach s = new Sach(TenSach, TacGia, TheLoai, NamXuatBan, SoLuong, TrangThai);
             if (sachDAO.insertSach(s)) {
                 JOptionPane.showMessageDialog(this, "Thêm thành công");
                 loadData();
@@ -375,10 +375,10 @@ public class QuanLySachPanel extends javax.swing.JPanel {
             String TenSach = txtTenSach.getText();
             String TacGia = txtTacGia.getText();
             String TheLoai = cboTheLoai.getSelectedItem().toString();
-            int NamXB = Integer.parseInt(txtNamXB.getText());
+            int NamXuatBan = Integer.parseInt(txtNamXuatBan.getText());
             int SoLuong = Integer.parseInt(txtSoLuong.getText());
             String TrangThai = txtTrangThai.getText();
-            Sach s = new Sach(ma, TenSach, TacGia, TheLoai, NamXB, SoLuong, TrangThai);
+            Sach s = new Sach(ma, TenSach, TacGia, TheLoai, NamXuatBan, SoLuong, TrangThai);
 
             if (sachDAO.updateSach(s)) {
                 JOptionPane.showMessageDialog(this, "Cập nhật thành công");
@@ -419,17 +419,16 @@ public class QuanLySachPanel extends javax.swing.JPanel {
         txtTenSach.setText("");
         txtTacGia.setText("");
         cboTheLoai.setSelectedItem("Chọn thể loại");
-        txtNamXB.setText("");
+        txtNamXuatBan.setText("");
         txtSoLuong.setText("");
         txtTrangThai.setText("");
     }
 
     private void LoadTheLoai() {
-        cboTheLoai.removeAllItems();
-        List<String> list = SachDAO.getAllTheLoai();
-        for (String tl : list) {
+        cboTheLoai.removeAllItems(); // Xóa dữ liệu cũ
+        for (String tl : SachDAO.getAllTheLoai()) {
             cboTheLoai.addItem(tl);
         }
-
     }
+
 }

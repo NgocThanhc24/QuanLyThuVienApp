@@ -16,25 +16,25 @@ public class Sach {
     private String TenSach;
     private String TacGia;
     private String TheLoai;
-    private int NamXB;
+    private int NamXuatBan;
     private int SoLuong;
     private String TrangThai;
 
-    public Sach(int masach, String tensach, String tacgia, String theloai, int namxb, int soluong, String trangthai) {
+    public Sach(int masach, String tensach, String tacgia, String theloai, int namxuatban, int soluong, String trangthai) {
         this.MaSach = masach;
         this.TenSach = tensach;
         this.TacGia = tacgia;
         this.TheLoai = theloai;
-        this.NamXB = namxb;
+        this.NamXuatBan = namxuatban;
         this.SoLuong = soluong;
         this.TrangThai = trangthai;
     }
 
-    public Sach(String tensach, String tacgia, String theloai, int namxb, int soluong, String trangthai) {
+    public Sach(String tensach, String tacgia, String theloai, int namxuatban, int soluong, String trangthai) {
         this.TenSach = tensach;
         this.TacGia = tacgia;
         this.TheLoai = theloai;
-        this.NamXB = namxb;
+        this.NamXuatBan = namxuatban;
         this.SoLuong = soluong;
         this.TrangThai = trangthai;
     }
@@ -72,12 +72,12 @@ public class Sach {
         this.TheLoai = theloai;
     }
 
-    public int getNamXB() {
-        return NamXB;
+    public int getNamXuatBan() {
+        return NamXuatBan;
     }
 
-    public void setNamXB(int namxb) {
-        this.NamXB = namxb;
+    public void setNamXB(int namxuatban) {
+        this.NamXuatBan = namxuatban;
     }
 
     public int getSoLuong() {
@@ -98,6 +98,6 @@ public class Sach {
 
     @Override
     public String toString() {
-        return "Sach{" + "maSach=" + MaSach + ", tensach=" + TenSach + ", tacgia=" + TacGia + ", theloai=" + TheLoai + ", namxb=" + NamXB + ", soluong=" + SoLuong + ",trangthai=" +TrangThai+'}';
+        return "Sach{" + "maSach=" + MaSach + ", tensach=" + TenSach + ", tacgia=" + TacGia + ", theloai=" + TheLoai + ", namxuatban=" + NamXuatBan + ", soluong=" + SoLuong + ",trangthai=" +TrangThai+'}';
     }
 }

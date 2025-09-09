@@ -53,7 +53,7 @@
                                   <Component id="txtTrangThai" alignment="0" max="32767" attributes="0"/>
                                   <Component id="cboTheLoai" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtSoLuong" alignment="0" pref="283" max="32767" attributes="0"/>
-                                  <Component id="txtNamXB" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="txtNamXuatBan" alignment="1" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -99,7 +99,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel6" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
-                          <Component id="txtNamXB" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNamXuatBan" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -292,9 +292,9 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="txtNamXB">
+    <Component class="javax.swing.JTextField" name="txtNamXuatBan">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNamXBActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNamXuatBanActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
