@@ -27,6 +27,7 @@ public class QuanLySachPanel extends javax.swing.JPanel {
      */
     public QuanLySachPanel() {
         initComponents();
+        model = (DefaultTableModel) tblSach.getModel();
         String[] tieudecot = {"Mã sách", "Tên sách", "Tác giả", "Thể loại", "Năm xuất bản", "Số lượng", "Trạng thái"};
         model = new DefaultTableModel(tieudecot, 0);
         tblSach.setModel(model);
@@ -35,6 +36,7 @@ public class QuanLySachPanel extends javax.swing.JPanel {
         btnXoa.addActionListener(e -> xoaSach());
 
         loadData();
+        LoadTheLoai();
     }
 
     /**
@@ -290,7 +292,16 @@ public class QuanLySachPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtNamXBActionPerformed
 
     private void tblSachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSachMouseClicked
-        // TODO add your handling code here:
+        int row = tblSach.getSelectedRow();
+        if (row != -1) {
+            txtMaSach.setText(model.getValueAt(row, 0).toString());
+            txtTenSach.setText(model.getValueAt(row, 1).toString());
+            txtTacGia.setText(model.getValueAt(row, 2).toString());
+            cboTheLoai.setSelectedItem(model.getValueAt(row, 3).toString());
+            txtNamXB.setText(model.getValueAt(row, 4).toString());
+            txtSoLuong.setText(model.getValueAt(row, 5).toString());
+            txtTrangThai.setText(model.getValueAt(row, 6).toString());
+        }
     }//GEN-LAST:event_tblSachMouseClicked
 
 
@@ -413,4 +424,12 @@ public class QuanLySachPanel extends javax.swing.JPanel {
         txtTrangThai.setText("");
     }
 
+    private void LoadTheLoai() {
+        cboTheLoai.removeAllItems();
+        List<String> list = SachDAO.getAllTheLoai();
+        for (String tl : list) {
+            cboTheLoai.addItem(tl);
+        }
+
+    }
 }

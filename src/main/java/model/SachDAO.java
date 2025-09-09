@@ -42,6 +42,10 @@ public class SachDAO {
         return list;
     }
 
+    public static List<String> getAllTheLoai() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     // Thêm sách mới
     public boolean insertSach(Sach s) {
         String sql = "INSERT INTO Sach(TenSach, TacGia, NamXuatBan, TheLoai, SoLuong, TrangThai) VALUES (?, ?, ?, ?, ?, ?)";
